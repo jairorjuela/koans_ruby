@@ -62,10 +62,10 @@ class AboutMethods < Neo::Koan
   end
 
   def test_calling_with_variable_arguments
-    assert_equal __, method_with_var_args.class
-    assert_equal __, method_with_var_args
-    assert_equal __, method_with_var_args(:one)
-    assert_equal __, method_with_var_args(:one, :two)
+    assert_equal Array, method_with_var_args.class
+    assert_equal [], method_with_var_args
+    assert_equal [:one], method_with_var_args(:one)
+    assert_equal [:one, :two], method_with_var_args(:one, :two)
   end
 
   # ------------------------------------------------------------------
@@ -77,7 +77,7 @@ class AboutMethods < Neo::Koan
   end
 
   def test_method_with_explicit_return
-    assert_equal __, method_with_explicit_return
+    assert_equal :return_value, method_with_explicit_return
   end
 
   # ------------------------------------------------------------------
@@ -88,7 +88,7 @@ class AboutMethods < Neo::Koan
   end
 
   def test_method_without_explicit_return
-    assert_equal __, method_without_explicit_return
+    assert_equal :return_valueg, method_without_explicit_return
   end
 
   # ------------------------------------------------------------------
