@@ -19,7 +19,7 @@ def triangle(a, b, c)
     "Error"
   elsif a == b && b == c
     :equilateral
-  elsif (a == b && b!= c) || (b == c && a!= c)
+  elsif (a == b && b != c) || (b == c && a != b) || (c == a && a != b)
     :isosceles
   else a =! b && b != c && c!= a
     :scalene
