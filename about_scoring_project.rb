@@ -30,54 +30,18 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Your goal is to write the score method.
 
 def score(dice)
-  p dice
-  if dice.length.eql?(0)
-    0
-  else
-    args_not_cero(dice)
-  end
-end
-
-def args_not_cero(args)
-  options = {
-    1 => -> { one_lenght(args) },
-    4 => -> { four_lenght(args) }
-  }
-  options[args.length].()
-end
-
-def one_lenght(args)
-  p "one_lenght #{args}"
-  options = {
-    5 => -> { 50 },
-    1 => -> { 100 }
-  }
-  options[args[0]].()
-end
-
-def four_lenght(args)
-  p "four_lenght #{args}"
-  options = {
-    true => -> { equal_one_two(args)  },
-    false => -> { no_equal_one_two(args) }
-  }
-  options[args[0].eql?(args[1])].()
-end
-
-def no_equal_one_two(args)
-  p "four_lenght #{args}"
-  options = {
-    1 => -> { have_one(args) },
-    5 => -> { have_five }
-  }
-  options[args[0]].()
-end
-
-def have_one(args)
-  one = args.find_all { |num| (num.eql?(1)) }
-  one.map { |x| x = 100 }.inject(0){|sum,x| sum + x }
-  two = args.sort.find_all { |num| num != 1 }
-  two[0].eql?(5)
+  dice.uniq.map do |die|
+    count = dice.count die
+    if count > 2
+      count -= 3
+      die == 1 ? 1000 : 100 * die
+    else 0
+    end + case die
+          when 1 then count * 100
+          when 5 then count * 50
+          else 0
+          end
+  end.inject(:+) || 0
 end
 
 class AboutScoringProject < Neo::Koan
