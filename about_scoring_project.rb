@@ -40,18 +40,25 @@ end
 
 def args_not_cero(args)
   options = {
-    1 => -> { one_lenght(args) }
+    1 => -> { one_lenght(args) },
+    4 => -> { four_lenght(args) }
   }
   options[args.length].()
 end
 
 def one_lenght(args)
-  p "dddd #{args}"
+  p "one_lenght #{args}"
   options = {
     5 => -> { 50 },
     1 => -> { 100 }
   }
   options[args[0]].()
+end
+
+def four_lenght(args)
+  p "four_lenght #{args}"
+  new = args.sort
+  
 end
 
 class AboutScoringProject < Neo::Koan
