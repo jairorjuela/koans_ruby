@@ -57,8 +57,27 @@ end
 
 def four_lenght(args)
   p "four_lenght #{args}"
-  new = args.sort
-  
+  options = {
+    true => -> { equal_one_two(args)  },
+    false => -> { no_equal_one_two(args) }
+  }
+  options[args[0].eql?(args[1])].()
+end
+
+def no_equal_one_two(args)
+  p "four_lenght #{args}"
+  options = {
+    1 => -> { have_one(args) },
+    5 => -> { have_five }
+  }
+  options[args[0]].()
+end
+
+def have_one(args)
+  one = args.find_all { |num| (num.eql?(1)) }
+  one.map { |x| x = 100 }.inject(0){|sum,x| sum + x }
+  two = args.sort.find_all { |num| num != 1 }
+  two[0].eql?(5)
 end
 
 class AboutScoringProject < Neo::Koan
