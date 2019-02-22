@@ -3,8 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 # Implement a DiceSet Class here:
 #
 class DiceSet
-  def roll(dice)
-    dice.to_h
+  def roll(value)
+    dice = {}
+    dice.merge!(key: value)
   end
 end
 
