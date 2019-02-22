@@ -4,7 +4,7 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 class DiceSet
   def roll(dice)
-    #code
+    dice.to_h
   end
 end
 
