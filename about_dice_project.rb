@@ -7,7 +7,6 @@ class DiceSet
   def roll(value)
     @values = Array.new
     (1..value).each { |count| @values << rand(1..6) }
-    p @values
   end
   @values
 end
